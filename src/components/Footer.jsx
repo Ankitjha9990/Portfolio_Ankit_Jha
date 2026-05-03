@@ -63,7 +63,7 @@ export default function Footer() {
             <div className="footer-heading">More</div>
             <a href="#timeline" className="footer-link">Timeline</a>
             <a href="#certifications" className="footer-link">Certifications</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="footer-link">Resume</a>
+            <a href="/Resume_Ankit_Jha.docx" target="_blank" rel="noopener noreferrer" className="footer-link">Resume</a>
           </div>
           <div className="footer-col">
             <div className="footer-heading">Get in Touch</div>

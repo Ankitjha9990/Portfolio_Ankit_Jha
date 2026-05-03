@@ -9,7 +9,7 @@ export default function Preloader({ onComplete }) {
     const interval = setInterval(() => {
       // Simulate loading with easing — fast start, slow near end
       const remaining = 100 - current;
-      const step = Math.max(0.5, remaining * 0.06);
+      const step = Math.max(1.5, remaining * 0.12);
       current = Math.min(current + step, 100);
       setProgress(Math.round(current));
 
@@ -19,10 +19,10 @@ export default function Preloader({ onComplete }) {
           setHiding(true);
           setTimeout(() => {
             onComplete();
-          }, 600);
-        }, 400);
+          }, 300);
+        }, 150);
       }
-    }, 30);
+    }, 15);
 
     return () => clearInterval(interval);
   }, [onComplete]);

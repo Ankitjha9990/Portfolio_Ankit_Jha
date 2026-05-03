@@ -15,30 +15,47 @@ export default function Hero() {
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Preload frames
+  // Optimized batched preloader
   useEffect(() => {
-    const loadedImages = [];
-    let loadedCount = 0;
+    const loadedImages = new Array(FRAME_COUNT);
 
-    for (let i = 0; i < FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = getFramePath(i);
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === FRAME_COUNT) {
-          setImages(loadedImages);
-          setIsLoaded(true);
+    // Load first frame immediately
+    const firstImg = new Image();
+    firstImg.src = getFramePath(0);
+    loadedImages[0] = firstImg;
+
+    firstImg.onload = () => {
+      setImages(loadedImages);
+      setIsLoaded(true);
+
+      // Load remaining frames in small batches to avoid network clogging
+      let currentIndex = 1;
+      const loadBatch = () => {
+        if (currentIndex >= FRAME_COUNT) return;
+        
+        const batchSize = Math.min(4, FRAME_COUNT - currentIndex);
+        let loadedInBatch = 0;
+        
+        for (let i = 0; i < batchSize; i++) {
+          const idx = currentIndex + i;
+          const img = new Image();
+          img.src = getFramePath(idx);
+          loadedImages[idx] = img;
+          
+          const onImgLoad = () => {
+            loadedInBatch++;
+            if (loadedInBatch === batchSize) {
+              currentIndex += batchSize;
+              loadBatch();
+            }
+          };
+          img.onload = onImgLoad;
+          img.onerror = onImgLoad;
         }
       };
-      img.onerror = () => {
-        loadedCount++;
-        if (loadedCount === FRAME_COUNT) {
-          setImages(loadedImages);
-          setIsLoaded(true);
-        }
-      };
-      loadedImages[i] = img;
-    }
+      
+      loadBatch();
+    };
   }, []);
 
   const drawFrame = useCallback(
@@ -141,7 +158,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="hero-actions"
           >
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <a href="/Resume_Ankit_Jha.docx" target="_blank" rel="noopener noreferrer" className="btn-primary">
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
