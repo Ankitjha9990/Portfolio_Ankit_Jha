@@ -1,0 +1,118 @@
+.about-section {
+  padding: 120px 24px;
+  background: #0d0d0d;
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.about-left {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stat-item {
+  position: relative;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.stat-item:hover::before {
+  background: #06b6d4;
+}
+
+.stat-item:hover {
+  transform: translateX(8px);
+}
+
+.stat-number {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.about-right {
+  flex: 1;
+  position: relative;
+  padding-left: 32px;
+}
+
+.about-right::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, #3b82f6, transparent);
+  border-radius: 2px;
+}
+
+.about-heading {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.about-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 900px) {
+  .about-section {
+    flex-direction: column;
+    padding: 80px 16px;
+    gap: 48px;
+  }
+  .about-left {
+    width: 100%;
+  }
+  .about-right {
+    padding-left: 0;
+  }
+  .about-right::before {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-left {
+    grid-template-columns: 1fr;
+  }
+}

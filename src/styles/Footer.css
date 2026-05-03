@@ -1,0 +1,138 @@
+.footer {
+  background: #0a0a0a;
+  padding: 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 24px 32px;
+}
+
+/* Top section */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 0;
+}
+
+.footer-brand {
+  max-width: 420px;
+}
+
+.footer-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  color: #ffffff;
+}
+
+.footer-social-link svg {
+  opacity: 0.6;
+  transition: opacity 0.25s ease;
+}
+
+.footer-social-link:hover svg {
+  opacity: 1;
+}
+
+/* Divider */
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 40px 0;
+}
+
+/* Bottom grid */
+.footer-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 16px;
+}
+
+.footer-link {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-contact-item {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+}
+
+/* Copyright */
+.footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 24px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    padding: 48px 16px 24px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .footer-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-socials {
+    flex-wrap: wrap;
+  }
+}
