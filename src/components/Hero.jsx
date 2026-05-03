@@ -75,6 +75,7 @@ export default function Hero() {
       const imgH = img.naturalHeight;
 
       const scale = Math.max(canvasW / imgW, canvasH / imgH);
+        
       const drawW = imgW * scale;
       const drawH = imgH * scale;
       const drawX = (canvasW - drawW) / 2;

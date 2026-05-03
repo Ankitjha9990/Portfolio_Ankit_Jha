@@ -199,29 +199,79 @@
 
 @media (max-width: 1024px) {
   .hero-sticky {
+    display: flex;
     flex-direction: column;
     height: 100vh;
+    overflow: hidden;
   }
   
+  .hero-right {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+    order: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    z-index: 10;
+  }
+
   .hero-left {
+    position: relative;
     max-width: 100%;
-    padding: 120px 6vw 40px;
+    width: 100%;
+    height: 45vh;
+    order: 2;
+    padding: 0 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     align-items: center;
+    z-index: 20;
+    flex: none;
   }
 
   .hero-description {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .hero-right {
-    width: 100%;
-    height: 60vh;
-    flex: none;
+  .hero-actions {
+    justify-content: center;
   }
   
   .hero-canvas {
-    mask-image: linear-gradient(to bottom, transparent, black 20%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%);
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .glass-card {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
   }
 }
